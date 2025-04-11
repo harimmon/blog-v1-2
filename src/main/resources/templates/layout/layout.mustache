@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .post-card {
+            margin-bottom: 20px;
+        }
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .post-meta {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .post-content {
+            margin: 15px 0;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .comment-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    {{>layout/header}}
+
+    <div class="container mt-4">
+        {{#msg}}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+        {{/msg}}
+        {{{body}}}
+    </div>
+
+    {{>layout/footer}}
+</body>
+</html> 
