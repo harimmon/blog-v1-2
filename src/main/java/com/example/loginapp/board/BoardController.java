@@ -12,7 +12,7 @@ public class BoardController {
 
     @GetMapping("/")
     public String list(HttpServletRequest request) {
-        request.setAttribute("models", boardService.글목록보기(null));
+        request.setAttribute("models", boardService.글목록보기());
         return "board/list";
     }
 } 

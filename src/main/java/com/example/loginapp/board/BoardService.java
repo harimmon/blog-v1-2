@@ -11,8 +11,8 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    @Transactional(readOnly = true)
-    public List<Board> 글목록보기(Integer userId) {
+    @Transactional
+    public List<Board> 글목록보기() {
         return boardRepository.findAll();
     }
 } 
