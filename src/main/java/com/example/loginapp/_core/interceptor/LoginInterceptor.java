@@ -1,12 +1,11 @@
 package com.example.loginapp._core.interceptor;
 
+import com.example.loginapp._core.erorr.ex.Exception401;
+import com.example.loginapp.user.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
-import com.example.loginapp._core.erorr.ex.Exception401;
-import com.example.loginapp._core.erorr.ex.ExceptionApi401;
-import com.example.loginapp.user.User;
 
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -17,14 +16,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if (sessionUser == null) {
-            if (uri.contains("/api")) {
-                throw new ExceptionApi401("인증이 필요합니다");
-            } else {
-                throw new Exception401("인증이 필요합니다");
-            }
+        if (uri.equals("/")) {
+            if (sessionUser == null) throw new Exception401("인증이 필요합니다");
         }
-
         return true;
     }
 } 

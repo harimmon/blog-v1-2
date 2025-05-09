@@ -1,9 +1,9 @@
 package com.example.loginapp._core.config;
 
+import com.example.loginapp._core.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import com.example.loginapp._core.interceptor.LoginInterceptor;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -12,7 +12,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         WebMvcConfigurer.super.addInterceptors(registry);
         registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/user/**")
+                .addPathPatterns("/") // 홈 주소
+                .addPathPatterns("/user/**") // 회원 관련 기능
                 .excludePathPatterns("/api/check-username-available/**");
     }
 } 
